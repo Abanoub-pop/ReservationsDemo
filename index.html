@@ -8,13 +8,16 @@
     <script>
         function addAttendee() {
 
-            var attFullname = window.prompt("what is your name");
+            var attFullname = document.getElementById("attFullName").value;
+            //var attFullname = window.prompt("what is your name");
             var body = document.getElementById("attendeesTableBody");
             var row = document.createElement("tr");
             var cell = document.createElement("td");
             cell.innerHTML = attFullname;
             body.appendChild(row);
             row.appendChild(cell);
+            //reset form fields
+            var attFullname = document.getElementById("attFullName").value ="";
         }
 
     </script>
@@ -27,7 +30,8 @@
             <label>Full name:</label><input type="text" name="attFullName" id="attFullName">
         </div>
         <div>
-            <input type="button" value="Register">
+             <input type="button" value="Register" onclick="addAttendee();"> 
+            <!--input type="button" value="Register"-->
         </div>
     </form>
     <table border="1" id="attendeesTable">
@@ -43,14 +47,14 @@
     </table>
 
     <Script>
-
-        addAttendee();
-       /* window.alert("one more!");*/
-        addAttendee();
-        addAttendee();
-        addAttendee();
-        addAttendee();
-
+        /*
+                addAttendee();
+                window.alert("one more!");
+                addAttendee();
+                addAttendee();
+                addAttendee();
+                addAttendee();
+        */
 
     </Script>
 
