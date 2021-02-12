@@ -7,20 +7,26 @@
     <title>Reservations Demo</title>
     <script>
         function addAttendee() {
-
             var attFullname = document.getElementById("attFullName").value;
-            //var attFullname = window.prompt("what is your name");
+            attendees.push(attFullname);
+           attendees.sort();
             var body = document.getElementById("attendeesTableBody");
-            var row = document.createElement("tr");
-            var cell = document.createElement("td");
-            cell.innerHTML = attFullname;
-            body.appendChild(row);
-            row.appendChild(cell);
+            body.innerHTML  = "";  // remove previous rows
+
+            for (var i = 0; i < attendees.length; i++) {
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                cell.innerHTML = attendees[i];
+                body.appendChild(row);
+                row.appendChild(cell);
+            }
             //reset form fields
             var attFullname = document.getElementById("attFullName").value ="";
         }
- //var attFullname = window.prompt("what is your name");
-    </script>
+
+        var attendees = [];
+
+</script>
 </head>
 
 <body>
