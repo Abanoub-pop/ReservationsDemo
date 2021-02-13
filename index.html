@@ -9,39 +9,52 @@
         function addAttendee() {
             getANewAttendee();
             attendees.sort();
-            displayAttendees();  // separation conern
-            resetDataEntryfields();
+            displayAttendees();  // separation concern
+            resetDataEntryFields();
         }
-        
+
         function getANewAttendee() {
             var attFullname = document.getElementById("attFullName").value;
-            attendees.push(attFullname);
-            
-            
-        }
-        
-        function resetDataEntryfields() {
-            var attFullname = document.getElementById("attFullName").value ="";
+            var attCompany = document.getElementById("attCompany").value;
+            var attedee = {
+                fullName : attFullname,
+                company : attCompany,
+            };
+            window.alert(attendee.fullName + " ~ " + attendee.company);
+            attendees.push(attendee);
 
-        } 
+
+        }
+
+        function resetDataEntryFields() {
+            document.getElementById("attFullName").value = "";
+            document.getElementById("attCompany").value = "";
+
+        }
         // refactor  and re-arrange the fuction with better quality
         function displayAttendees() {
             var body = document.getElementById("attendeesTableBody");
-            body.innerHTML  = "";  // remove previous rows
-    
+            body.innerHTML = "";  // remove previous rows
+
             for (var i = 0; i < attendees.length; i++) {
                 var row = document.createElement("tr");
+
                 var cell = document.createElement("td");
-                cell.innerHTML = attendees[i];
-                body.appendChild(row);
+                cell.innerHTML = attendees[i].fullName;
                 row.appendChild(cell);
+
+                cell = document.createElement("td");
+                cell.innerHTML = attendees[i].company;
+                row.appendChild(cell);
+
+                body.appendChild(row);
             }
-            
+
 
         }
         var attendees = [];
 
-</script>
+    </script>
 </head>
 
 <body>
@@ -51,7 +64,7 @@
             <label>Full name:</label><input type="text" name="attFullName" id="attFullName">
         </div>
         <div>
-             <input type="button" value="Register" onclick="addAttendee();"> 
+            <input type="button" value="Register" onclick="addAttendee();">
             <!--input type="button" value="Register"-->
         </div>
     </form>
