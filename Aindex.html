@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations Demo</title>
+    <script>
+        function addAttendee() {
+            getANewAttendee();
+            attendees.sort();
+            displayAttendees();  // separation conern
+            resetDataEntryfields();
+        }
+        
+        function getANewAttendee() {
+            var attFullname = document.getElementById("attFullName").value;
+            attendees.push(attFullname);
+            
+            
+        }
+        
+        function resetDataEntryfields() {
+            var attFullname = document.getElementById("attFullName").value ="";
+
+        } 
+        // refactor  and re-arrange the fuction with better quality
+        function displayAttendees() {
+            var body = document.getElementById("attendeesTableBody");
+            body.innerHTML  = "";  // remove previous rows
+    
+            for (var i = 0; i < attendees.length; i++) {
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                cell.innerHTML = attendees[i];
+                body.appendChild(row);
+                row.appendChild(cell);
+            }
+            
+
+        }
+        var attendees = [];
+
+</script>
+</head>
+
+<body>
+
+    <form>
+        <div>
+            <label>Full name:</label><input type="text" name="attFullName" id="attFullName">
+        </div>
+        <div>
+             <input type="button" value="Register" onclick="addAttendee();"> 
+            <!--input type="button" value="Register"-->
+        </div>
+    </form>
+    <table border="1" id="attendeesTable">
+        <thead>
+            <tr>
+                <th>Full name</th>
+            </tr>
+        </thead>
+
+        <tbody id="attendeesTableBody">
+
+        </tbody>
+    </table>
+
+    <Script>
+        /*
+                addAttendee();
+                window.alert("one more!");
+                addAttendee();
+                addAttendee();
+                addAttendee();
+                addAttendee();
+        */
+
+    </Script>
+
+</body>
+
+</html>
