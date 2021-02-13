@@ -7,12 +7,28 @@
     <title>Reservations Demo</title>
     <script>
         function addAttendee() {
+            getANewAttendee();
+            attendees.sort();
+            displayAttendees();  // separation conern
+            resetDataEntryfields();
+        }
+        
+        function getANewAttendee() {
             var attFullname = document.getElementById("attFullName").value;
             attendees.push(attFullname);
-           attendees.sort();
+            
+            
+        }
+        
+        function resetDataEntryfields() {
+            var attFullname = document.getElementById("attFullName").value ="";
+
+        } 
+        // refactor  and re-arrange the fuction with better quality
+        function displayAttendees() {
             var body = document.getElementById("attendeesTableBody");
             body.innerHTML  = "";  // remove previous rows
-
+    
             for (var i = 0; i < attendees.length; i++) {
                 var row = document.createElement("tr");
                 var cell = document.createElement("td");
@@ -20,10 +36,9 @@
                 body.appendChild(row);
                 row.appendChild(cell);
             }
-            //reset form fields
-            var attFullname = document.getElementById("attFullName").value ="";
-        }
+            
 
+        }
         var attendees = [];
 
 </script>
