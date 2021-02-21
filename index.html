@@ -15,13 +15,28 @@
 
         function getANewAttendee() {
             var attFullname = document.getElementById("attFullName").value;
+<<<<<<< HEAD
             attendees.push(attFullname);
+=======
+            var attCompany = document.getElementById("attCompany").value;
+            var attedee = {
+                fullName : attFullname,
+                company : attCompany,
+            };
+            window.alert(attendee.fullName + " ~ " + attendee.company);
+            attendees.push(attendee);
+>>>>>>> ac686f3c146bad8f63facc5091698650944bb2ee
 
 
         }
 
         function resetDataEntryFields() {
+<<<<<<< HEAD
             var attFullname = document.getElementById("attFullName").value = "";
+=======
+            document.getElementById("attFullName").value = "";
+            document.getElementById("attCompany").value = "";
+>>>>>>> ac686f3c146bad8f63facc5091698650944bb2ee
 
         }
         // refactor  and re-arrange the fuction with better quality
@@ -35,6 +50,7 @@
                 cell.innerHTML = attendees[i];
                 body.appendChild(row);
                 row.appendChild(cell);
+
             }
 
 
