@@ -6,82 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservations Demo</title>
     <script>
-        function addAttendee() {
-            getANewAttendee();
-            attendees.sort();
-            displayAttendees();  // separation concern
-            resetDataEntryFields();
+        function compareAttendees(a, b) {
+            if (a.fullName < b.fullName) return -1;
+            if (a.fullName > b.fullName) return 1;
+            // equal fuuk names
+            if (a.company < b.company) return -1;
+            if (a.company > b.company) return 1;
+
+            return 0;
         }
 
+        function addAttendee() {
+            getANewAttendee();
+            attendees.sort(compareAttendees);
+            displayAttendees();
+            resetDataEntryFields();
+        }
         function getANewAttendee() {
             var attFullname = document.getElementById("attFullName").value;
-
-            // reset from fields
-            attendees.push(attFullname);
-
+            var attCompany = document.getElementById("attCompany").value;
+            var attendee = {
+                fullName: attFullname,
+                company: attCompany,
+            };
+            attendees.push(attendee);
         }
 
         function resetDataEntryFields() {
             document.getElementById("attFullName").value = "";
-
-
+            document.getElementById("attCompany").value = "";
         }
-        // refactor  and re-arrange the fuction with better quality
         function displayAttendees() {
             var body = document.getElementById("attendeesTableBody");
-            body.innerHTML = "";  // remove previous rows
-
+            body.innerHTML = ""; // remove previous rows
             for (var i = 0; i < attendees.length; i++) {
                 var row = document.createElement("tr");
                 var cell = document.createElement("td");
-                cell.innerHTML = attendees[i];
-                body.appendChild(row);
+                cell.innerHTML = attendees[i].fullName;
                 row.appendChild(cell);
-
+                cell = document.createElement("td");
+                cell.innerHTML = attendees[i].company;
+                row.appendChild(cell);
+                body.appendChild(row);
             }
-
-
         }
         var attendees = [];
-
     </script>
 </head>
-
 <body>
-
     <form>
         <div>
             <label>Full name:</label><input type="text" name="attFullName" id="attFullName">
         </div>
         <div>
+            <label>Company:</label><input type="text" name="attCompany" id="attCompany">
+        </div>
+        <div>
             <input type="button" value="Register" onclick="addAttendee();">
-            <!--input type="button" value="Register"-->
         </div>
     </form>
-    <table border="1" id="attendeesTable">
+    <table border='1' id="attendeesTable">
         <thead>
             <tr>
                 <th>Full name</th>
+                <th>Company</th>
             </tr>
         </thead>
-
         <tbody id="attendeesTableBody">
-
         </tbody>
     </table>
-
-    <Script>
-        /*
-                addAttendee();
-                window.alert("one more!");
-                addAttendee();
-                addAttendee();
-                addAttendee();
-                addAttendee();
-        */
-
-    </Script>
-
 </body>
-
 </html>
