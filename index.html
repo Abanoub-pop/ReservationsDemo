@@ -10,7 +10,7 @@
             getANewAttendee();
             attendees.sort();
             displayAttendees();  // separation concern
-            resetDataEntryfields();
+            resetDataEntryFields();
         }
 
         function getANewAttendee() {
@@ -20,14 +20,14 @@
 
         }
 
-        function resetDataEntryfields() {
-            var attFullname = document.getElementById("attFullName").value ="";
+        function resetDataEntryFields() {
+            var attFullname = document.getElementById("attFullName").value = "";
 
-        } 
+        }
         // refactor  and re-arrange the fuction with better quality
         function displayAttendees() {
             var body = document.getElementById("attendeesTableBody");
-            body.innerHTML  = "";  // remove previous rows
+            body.innerHTML = "";  // remove previous rows
 
             for (var i = 0; i < attendees.length; i++) {
                 var row = document.createElement("tr");
@@ -41,7 +41,7 @@
         }
         var attendees = [];
 
-</script>
+    </script>
 </head>
 
 <body>
@@ -51,7 +51,7 @@
             <label>Full name:</label><input type="text" name="attFullName" id="attFullName">
         </div>
         <div>
-             <input type="button" value="Register" onclick="addAttendee();"> 
+            <input type="button" value="Register" onclick="addAttendee();">
             <!--input type="button" value="Register"-->
         </div>
     </form>
