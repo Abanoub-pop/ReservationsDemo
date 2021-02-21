@@ -15,12 +15,14 @@
 
         function getANewAttendee() {
             var attFullname = document.getElementById("attFullName").value;
+
+            // reset from fields
             attendees.push(attFullname);
 
         }
 
         function resetDataEntryFields() {
-            var attFullname = document.getElementById("attFullName").value = "";
+            document.getElementById("attFullName").value = "";
 
 
         }
